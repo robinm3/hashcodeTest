@@ -13,32 +13,38 @@ def read_file():
     customer_orders = []
     row = 0
     number = 0
+    first = True
 
     for index, line in enumerate(lines):
+        line = line.replace("\n", "")
         if index == 0:
-            params += line.split(" ");
+            params += line.split(" ")
         elif index == 1:
             number_of_products = line
         elif index == 2:
             weights = line.split(" ")
         elif index == 3:
             number_of_warehouses = int(line)
-        elif 4 <= index < 4 + number_of_warehouses:
-            if index%2 == 0:
+        elif 4 <= index < 4 + number_of_warehouses*2:
+            if first:
                 warehouse_info = line.split(" ")
                 row = warehouse_info[0]
                 column = warehouse_info[1]
+                first = False
             else:
                 items = line.split(" ")
-                warehouses += {
+                warehouses.append({
                     "row": row,
                     "column": column,
                     "items": items
-                }
-        elif index == 5 + number_of_warehouses:
+                })
+                first = True
+
+        elif index == 4 + number_of_warehouses*2:
             number_of_customer_orders = line
         elif line:
-            line_value = (index - (5 + number_of_warehouses))%3
+            line_value = (index - (5 + number_of_warehouses*2)) % 3
+
             if line_value == 0:
                 line_infos = line.split(" ")
                 row = line_infos[0]
@@ -47,12 +53,12 @@ def read_file():
                 number = line
             elif line_value == 2:
                 product_types = line.split(" ")
-                customer_orders += {
+                customer_orders.append({
                     "row": row,
                     "column": column,
                     "number": number,
                     "product_types": product_types
-                }
+                })
 
     infos = {
         "warehouses": warehouses,
@@ -68,4 +74,4 @@ def read_file():
         "maximum_load": params[4],
         "customer_orders": customer_orders
     }
-    print(infos)
+    return infos
