@@ -6,8 +6,8 @@ class Warehouse:
         self.items = items
         self.ordre_commande = []
     
-    def faire_classement():pass 
+    def mes_commandes(self):pass
 
 liste_warehouse = []
-for i in range(info["number_of_warehouses"]):
-    liste_warehouse.append(Wearhouse(info["warehouses"]))
+for i in fileFormatting.read_file()["warehouses"]:
+    liste_warehouse.append(Warehouse((i["row"], i["column"]), i["items"]))
