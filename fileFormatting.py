@@ -75,3 +75,30 @@ def read_file():
         "customer_orders": customer_orders
     }
     return infos
+
+
+def write_file(number_of_drone_commands, commands):
+    file = open("output.txt", "w")
+    file.write(str(number_of_drone_commands) + "\n")
+    for command in commands:
+        line_to_write = ""
+        if command["tag"] in ["L", "U"]:
+            line_to_write += str(command["drone_id"]) + " "
+            line_to_write += str(command["tag"]) + " "
+            line_to_write += str(command["warehouse_id"]) + " "
+            line_to_write += str(command["product_type_id"]) + " "
+            line_to_write += str(command["number_of_items"]) + "\n"
+        elif command["tag"] == "D":
+            line_to_write += str(command["drone_id"]) + " "
+            line_to_write += str(command["tag"]) + " "
+            line_to_write += "D "
+            line_to_write += str(command["customer_id"]) + " "
+            line_to_write += str(command["product_type_id"]) + " "
+            line_to_write += str(command["number_of_items"]) + "\n"
+        elif command["tag"] == "W":
+            line_to_write += str(command["drone_id"]) + " "
+            line_to_write += "W "
+            line_to_write += str(command["number_of_turns"]) + "\n"
+        file.write(line_to_write)
+    file.close()
+
