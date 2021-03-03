@@ -16,7 +16,7 @@ def algo(warehouses, params, weights, number_of_products, number_of_warehouses, 
     commande = Commande(order_position, order1.product_types, order1.number)
 
     warehouses_to_check = commande.find_warehouse_stock(warehouses)
-    warehouse_chosen = commande.find_warehouse_distance(warehouses_to_check)
+    warehouse_chosen = commande.find_warehouse(warehouses_to_check)
 
     drone = Drone(params[4], position_base_drone)
 
