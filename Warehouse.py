@@ -10,4 +10,4 @@ class Warehouse:
 
 liste_warehouse = []
 for i in fileFormatting.read_file()["warehouses"]:
-    liste_warehouse.append(Warehouse((i[0], i[1]), i[2]))
+    liste_warehouse.append(Warehouse((i["row"], i["column"]), i["items"]))

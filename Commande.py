@@ -2,10 +2,10 @@ import fileFormatting
 
 
 class Commande:
-    def __init__(self, position, items, Num):
+    def __init__(self, position, nombre, items):
         self.position = position
         self.items = items
-        self.num = Num
+        self.nombre = nombre
 
     def find_warehouse_stock(self, liste_warehouse):
         valide_warehouse = []
@@ -32,4 +32,5 @@ class Commande:
         return distance[1]
 
 liste_commande = []
-for i in fileFormatting.read_file()["customer_orders"]:pass
+for i in fileFormatting.read_file()["customer_orders"]:
+    liste_commande.append(Commande(((i["row"], i["column"]), i["number"] ,i["product_types"]))
