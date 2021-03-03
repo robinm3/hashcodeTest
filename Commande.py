@@ -31,6 +31,5 @@ class Commande:
                 distance[j + 1] = temp
         return distance[1]
 
-liste_commande = []
-for i in fileFormatting.read_file()["customer_orders"]:
-    liste_commande.append(Commande(((i["row"], i["column"]), i["number"] ,i["product_types"]))
+
+
