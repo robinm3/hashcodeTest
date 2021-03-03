@@ -1,3 +1,6 @@
+import fileFormatting
+
+
 class Commande:
     def __init__(self, position, items, Num):
         self.position = position
@@ -16,14 +19,17 @@ class Commande:
         return valide_warehouse
                 
 
-    def find_warehouse_distance(self, liste_warehouse):
+    def find_warehouse(self, liste_warehouse):
         distance = []
         valide = self.find_warehouse_stock(liste_warehouse)
         for warehouse in valide:            
-            distance.append([(self.position[0] - warehouse.position[0])**2 + (self.position[1] - warehouse.position[1])**2, valide.index(warehouse)])
+            distance.append([(self.position[0] - warehouse.position[0])**2 + (self.position[1] - warehouse.position[1])**2, warehouse])
         for j in range(len(distance)):  
             if (distance[j][0] > distance[j + 1][0]):  
                 temp = distance[j]  
                 distance[j] = distance[j + 1]  
                 distance[j + 1] = temp
-        return distance[0]
+        return distance[1]
+
+liste_commande = []
+for i in fileFormatting.read_file()["customer_orders"]:pass
