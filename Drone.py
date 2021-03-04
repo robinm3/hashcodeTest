@@ -2,7 +2,8 @@ import math
 
 
 class Drone:
-    def __init__(self, capacité, position):
+    def __init__(self, drone_id, capacité, position):
+        self.drone_id = drone_id
         self.capacité = capacité
         self.position = position
         self.items = {}

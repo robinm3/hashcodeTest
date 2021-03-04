@@ -90,7 +90,6 @@ def write_file(number_of_drone_commands, commands):
             line_to_write += str(command["number_of_items"]) + "\n"
         elif command["tag"] == "D":
             line_to_write += str(command["drone_id"]) + " "
-            line_to_write += str(command["tag"]) + " "
             line_to_write += "D "
             line_to_write += str(command["customer_id"]) + " "
             line_to_write += str(command["product_type_id"]) + " "

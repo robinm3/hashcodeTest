@@ -38,7 +38,7 @@ def test():
     listes_warehouses = get_warehouses()
 
     infos = parse_and_format.read_file()
-    commandes = Algo.algo(listes_warehouses, infos["weights"], int(infos["maximum_load"]), int(infos["deadline"]), listes_commandes)
+    commandes = Algo.algo(listes_warehouses, infos["weights"], int(infos["maximum_load"]), int(infos["deadline"]), listes_commandes, int(infos["number_of_drones"]))
 
     parse_and_format.write_file(len(commandes), commandes)
 

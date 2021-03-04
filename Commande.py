@@ -22,25 +22,29 @@ class Commande:
 
         return next_best_warehouse[0]
 
-    def find_next_best_warehouse(self, liste_warehouse, product_id):
-        next_best_warehouse = (False, 0)
-        valide_warehouse = []
+    def find_next_best_warehouse(self, drone, liste_warehouse, product_id):
+        closest_warehouse = warehouse_with_most_items = (False, 0, 10000000000)
         for warehouse in liste_warehouse:
             compteur = 0
             if warehouse.items[product_id] and warehouse.items[product_id] != '0':
                 compteur += int(warehouse.items[product_id])
-            if compteur > 0 and compteur > next_best_warehouse[1]:
-                next_best_warehouse = (warehouse, compteur)
-                valide_warehouse.append(warehouse)
-        return next_best_warehouse[0]
-
+            distance_from_drone = drone.get_distance_to(warehouse.position)
+            if compteur > 0 and distance_from_drone < closest_warehouse[2]:
+                closest_warehouse = (warehouse, compteur, distance_from_drone)
+            elif compteur > 0 and compteur > warehouse_with_most_items[1]:
+                warehouse_with_most_items = (warehouse, compteur, distance_from_drone)
+        if closest_warehouse[0]:
+            return closest_warehouse[0]
+        elif warehouse_with_most_items[0]:
+            return warehouse_with_most_items[0]
+        return False
 
     def find_warehouse(self, liste_warehouse):
         distance = []
         valide = self.find_warehouse_stock(liste_warehouse)
         for warehouse in valide:
             distance.append([(self.position["x"] - warehouse.position["y"]) ** 2 + (
-                        self.position["x"] - warehouse.position["y"]) ** 2, warehouse])
+                    self.position["x"] - warehouse.position["y"]) ** 2, warehouse])
 
         # for j in range(len(distance)):
         #
