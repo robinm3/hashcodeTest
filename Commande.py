@@ -1,6 +1,3 @@
-import fileFormatting
-
-
 class Commande:
     def __init__(self, position, nombre, items, id):
         self.position = position

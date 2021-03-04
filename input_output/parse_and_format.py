@@ -1,5 +1,5 @@
 def read_file():
-    file = open('busy_day.in')
+    file = open('input_output/busy_day.in')
 
     lines = file.readlines()
     file.close()
@@ -78,7 +78,7 @@ def read_file():
 
 
 def write_file(number_of_drone_commands, commands):
-    file = open("output.txt", "w")
+    file = open("input_output/output.out", "w")
     file.write(str(number_of_drone_commands) + "\n")
     for command in commands:
         line_to_write = ""

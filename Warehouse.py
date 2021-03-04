@@ -1,6 +1,3 @@
-import fileFormatting
-
-
 class Warehouse:
     def __init__(self, position, items, id):
         self.position = position
