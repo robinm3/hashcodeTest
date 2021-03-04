@@ -8,9 +8,3 @@ class Warehouse:
         self.id = id
     
     def mes_commandes(self):pass
-
-liste_warehouse = []
-id = 0
-for i in fileFormatting.read_file()["warehouses"]:
-    liste_warehouse.append(Warehouse((i["row"], i["column"]), i["items"], id))
-    id += 1
