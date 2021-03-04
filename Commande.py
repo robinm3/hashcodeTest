@@ -8,16 +8,35 @@ class Commande:
         self.nombre = nombre
         self.id = id
 
+    def item_delivered(self, product_type_id, number_of_items):
+        self.items[product_type_id] = int(self.items[product_type_id]) - number_of_items
+
     def find_warehouse_stock(self, liste_warehouse):
+        next_best_warehouse = (liste_warehouse[0], 0)
         valide_warehouse = []
         for warehouse in liste_warehouse:
             compteur = 0
             for i in range(len(self.items)):
-                if self.items[i] <= warehouse.items[i]:
-                    compteur += 1
-            if compteur > 0:
+                if self.items[i] in warehouse.items:
+                    compteur += int(warehouse.items[i])
+            if compteur > 0 and compteur > next_best_warehouse[1]:
+                next_best_warehouse = (warehouse, compteur)
                 valide_warehouse.append(warehouse)
-        return valide_warehouse
+
+        return next_best_warehouse[0]
+
+    def find_next_best_warehouse(self, liste_warehouse, product_id):
+        next_best_warehouse = (False, 0)
+        valide_warehouse = []
+        for warehouse in liste_warehouse:
+            compteur = 0
+            if warehouse.items[product_id] and warehouse.items[product_id] != '0':
+                compteur += int(warehouse.items[product_id])
+            if compteur > 0 and compteur > next_best_warehouse[1]:
+                next_best_warehouse = (warehouse, compteur)
+                valide_warehouse.append(warehouse)
+        return next_best_warehouse[0]
+
 
     def find_warehouse(self, liste_warehouse):
         distance = []

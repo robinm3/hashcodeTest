@@ -8,4 +8,19 @@ class Warehouse:
         self.ordre_commande = []
         self.id = id
 
-    def mes_commandes(self):pass
+    def unload(self, product_type_id, number_of_items):
+        if self.items[product_type_id] and int(self.items[product_type_id]) >= number_of_items:
+            self.items[product_type_id] = int(self.items[product_type_id]) - number_of_items
+            return number_of_items
+        elif self.items[product_type_id]:
+            number_possible = self.items[product_type_id]
+            self.items[product_type_id] = 0
+            return number_possible
+        else:
+            return False
+
+    def load(self, product_type_id, number_of_items):
+        self.items[product_type_id] += number_of_items
+
+
+
