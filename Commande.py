@@ -6,7 +6,7 @@ class Commande:
         self.id = id
 
     def item_delivered(self, product_type_id, number_of_items):
-        self.items[product_type_id] = int(self.items[product_type_id]) - number_of_items
+        self.items
 
     def find_warehouse_stock(self, liste_warehouse):
         next_best_warehouse = (liste_warehouse[0], 0)
