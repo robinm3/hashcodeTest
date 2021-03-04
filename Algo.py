@@ -91,7 +91,7 @@ def deliver_product_to_location_with_drone(customer_id, i, weights, number_of_it
 
 
 def get_next_drone_number(last_drone_id, number_of_drones):
-    if last_drone_id < number_of_drones:
+    if last_drone_id + 1 < number_of_drones:
         return last_drone_id + 1
     else:
         return 0
