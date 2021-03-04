@@ -16,6 +16,12 @@ def algo(warehouses, weights, maximum_load, deadline, customer_orders, number_of
                                                          warehouses,
                                                          commands, total_time,
                                                          deadline, number_of_drones)
+            print(total_time)
+            print(deadline)
+            if total_time + 2000 > deadline:
+                break
+        if total_time + 2000 > deadline:
+            break
     return commands
 
 
