@@ -13,21 +13,22 @@ def get_warehouses():
     id = 0
     for i in fileFormatting.read_file()["warehouses"]:
         position = {
-            "x": i["row"],
-            "y": i["column"]
+            "x": int(i["row"]),
+            "y": int(i["column"])
         }
-        liste_warehouse.append(Warehouse(position, i["items"], id))
+        liste_warehouse.append(Warehouse.Warehouse(position, i["items"], id))
         id += 1
+    return liste_warehouse
 
 
 def get_liste_commande():
     liste_commande = []
     for i in fileFormatting.read_file()["customer_orders"]:
         position = {
-            "x": i["row"],
-            "y": i["column"]
+            "x": int(i["row"]),
+            "y": int(i["column"])
         }
-        liste_commande.append(Commande.Commande(position, i["number"], i["product_types"]))
+        liste_commande.append(Commande.Commande(position, i["number"], i["product_types"], i))
     return liste_commande
 
 
@@ -60,10 +61,10 @@ def test():
     }
 
     listes_commandes = get_liste_commande()
-    listes_warehouses = get_warehouses
+    listes_warehouses = get_warehouses()
 
     infos = fileFormatting.read_file()
-    commandes = Algo.algo(listes_warehouses, infos["weights"], infos["maximum_load"], infos["deadline"], listes_commandes)
+    commandes = Algo.algo(listes_warehouses, infos["weights"], int(infos["maximum_load"]), int(infos["deadline"]), listes_commandes)
 
     fileFormatting.write_file(len(commandes), commandes)
 

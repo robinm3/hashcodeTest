@@ -15,22 +15,21 @@ class Commande:
             for i in range(len(self.items)):
                 if self.items[i] <= warehouse.items[i]:
                     compteur += 1
-            if compteur == len(warehouse.items):
+            if compteur > 0:
                 valide_warehouse.append(warehouse)
         return valide_warehouse
-                
 
     def find_warehouse(self, liste_warehouse):
         distance = []
         valide = self.find_warehouse_stock(liste_warehouse)
-        for warehouse in valide:            
-            distance.append([(self.position["x"] - warehouse.position["y"])**2 + (self.position["x"] - warehouse.position["y"])**2, warehouse])
-        for j in range(len(distance)):  
-            if (distance[j][0] > distance[j + 1][0]):  
-                temp = distance[j]  
-                distance[j] = distance[j + 1]  
-                distance[j + 1] = temp
-        return distance[1]
+        for warehouse in valide:
+            distance.append([(self.position["x"] - warehouse.position["y"]) ** 2 + (
+                        self.position["x"] - warehouse.position["y"]) ** 2, warehouse])
 
-
-
+        # for j in range(len(distance)):
+        #
+        #     if distance[j][0] > distance[j + 1][0]:
+        #         temp = distance[j]
+        #         distance[j] = distance[j + 1]
+        #         distance[j + 1] = temp
+        return distance[1][1]
