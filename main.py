@@ -49,29 +49,29 @@ if __name__ == '__main__':
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 
-command1 = {
-        "drone_id": 1234,
-        "tag": "L",
-        "warehouse_id": 123,
-        "product_type_id": 456,
-        "number_of_items": 4
-    }
-command2 = {
-        "drone_id": 456,
-        "tag": "U",
-        "warehouse_id": 456,
-        "product_type_id": 456,
-        "number_of_items": 2
-    }
-command3 = {
-        "drone_id": 456,
-        "tag": "D",
-        "customer_id": 456,
-        "product_type_id": 456,
-        "number_of_items": 2
-    }
-command4 = {
-        "drone_id": 789,
-        "tag": "W",
-        "number_of_turns": 3
-    }
+# commandLoad = {
+#         "drone_id": 1234,
+#         "tag": "L",
+#         "warehouse_id": 123,
+#         "product_type_id": 456,
+#         "number_of_items": 4
+#     }
+# commandUnload = {
+#         "drone_id": 456,
+#         "tag": "U",
+#         "warehouse_id": 456,
+#         "product_type_id": 456,
+#         "number_of_items": 2
+#     }
+# commandDeliver = {
+#         "drone_id": 456,
+#         "tag": "D",
+#         "customer_id": 456,
+#         "product_type_id": 456,
+#         "number_of_items": 2
+#     }
+# commandWait = {
+#         "drone_id": 789,
+#         "tag": "W",
+#         "number_of_turns": 3
+#     }
